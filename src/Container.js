@@ -6,44 +6,56 @@ export default class Container extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      multiplexor: this.calculateNormalizer(props),
-      barWidth: this.calculateBarWidth(props)
+      multiplexor: 0,
+      barWidth: 0
     }
-  }
-  calculateNormalizer(props) {
-    if (props.newStart) {
-      let maxSoFar = 0
-      props.values.forEach(value => {
-        maxSoFar = value > maxSoFar ? value : maxSoFar
-      })
-      return window.innerHeight / 1.5 / maxSoFar
-    } else {
-      return 1
-    }
-  }
-  calculateBarWidth(props) {
-    if (props.newStart) {
-      return Math.floor(window.innerWidth / 2 / props.values.length) == 0
-        ? 1
-        : Math.floor(window.innerWidth / 2 / props.values.length)
-    }
+    this.calculateBarWidth = this.calculateBarWidth.bind(this)
+    this.calculateNormalizer = this.calculateNormalizer.bind(this)
   }
 
+  calculateNormalizer(values) {
+    let maxSoFar = 0
+    values.forEach(value => {
+      maxSoFar = value > maxSoFar ? value : maxSoFar
+    })
+    this.setState({ multiplexor: window.innerHeight / 1.5 / maxSoFar })
+  }
+
+  calculateBarWidth(values) {
+    Math.floor(window.innerWidth / 2 / values.length) == 0
+      ? this.setState({ barWidth: 1 })
+      : this.setState({
+          barWidth: Math.floor(window.innerWidth / 2 / values.length)
+        })
+  }
+  getColor(index) {
+    return this.props.done
+      ? "purple"
+      : this.props.switching.includes(index)
+      ? "red"
+      : this.props.comparing.includes(index)
+      ? "green"
+      : "black"
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.newStart) {
+      this.calculateNormalizer(nextProps.values)
+      this.calculateBarWidth(nextProps.values)
+    }
+  }
+  componentWillMount() {
+    this.calculateNormalizer(this.props.values)
+    this.calculateBarWidth(this.props.values)
+  }
   render() {
     return (
-      <div style={{ height: window.innerHeight / 1.5 }}>
+      <div>
         {this.props.values.map((value, index) => (
           <Bar
-            color={
-              this.props.switching.includes(index)
-                ? "red"
-                : this.props.comparing.includes(index)
-                ? "blue"
-                : "black"
-            }
+            color={this.getColor(index)}
             key={index}
             width={this.state.barWidth}
-            height={Math.floor(value * this.state.multiplexor)}
+            height={value * this.state.multiplexor}
             newStart={this.props.newStart}
           ></Bar>
         ))}
