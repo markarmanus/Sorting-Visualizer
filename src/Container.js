@@ -2,6 +2,12 @@ import React from "react"
 import styled from "styled-components"
 import Bar from "./Bar.js"
 
+const Main = styled.div`
+  height: 50%;
+  width: 80%;
+  margin: auto;
+`
+
 export default class Container extends React.Component {
   constructor(props) {
     super(props)
@@ -18,15 +24,13 @@ export default class Container extends React.Component {
     values.forEach(value => {
       maxSoFar = value > maxSoFar ? value : maxSoFar
     })
-    this.setState({ multiplexor: window.innerHeight / 1.5 / maxSoFar })
+    this.setState({ multiplexor: 100 / maxSoFar })
   }
 
   calculateBarWidth(values) {
-    Math.floor(window.innerWidth / 2 / values.length) == 0
-      ? this.setState({ barWidth: 1 })
-      : this.setState({
-          barWidth: Math.floor(window.innerWidth / 2 / values.length)
-        })
+    this.setState({
+      barWidth: Math.max(100 / values.length, 0.01)
+    })
   }
   getColor(index) {
     return this.props.done
@@ -49,7 +53,7 @@ export default class Container extends React.Component {
   }
   render() {
     return (
-      <div>
+      <Main>
         {this.props.values.map((value, index) => (
           <Bar
             color={this.getColor(index)}
@@ -59,7 +63,7 @@ export default class Container extends React.Component {
             newStart={this.props.newStart}
           ></Bar>
         ))}
-      </div>
+      </Main>
     )
   }
 }

@@ -1,11 +1,12 @@
 import React from "react"
 import styled from "styled-components"
 
+const maringPercentage = 0.1
 const BarContainer = styled.div`
-  width: ${props => props.width}px;
+  width: ${props => props.width * (1 - maringPercentage)}%;
   background-color: ${props => props.color};
-  margin: ${props => (props.width == 1 ? 0 : 1)}px;
-  height: ${props => props.height}px;
+  margin-right: ${props => maringPercentage * props.width}%;
+  height: ${props => props.height}%;
   display: inline-block;
 `
 

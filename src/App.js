@@ -20,9 +20,7 @@ export default class App extends React.Component {
 
   generateArray(length) {
     // Plus one to avoid 0 values
-    return Array.from({ length: length }, () =>
-      Math.floor(Math.random() * 100 + 1)
-    )
+    return Array.from({ length: length }, () => Math.random() * 100)
   }
 
   async waitFor(time) {
@@ -84,7 +82,15 @@ export default class App extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          top: "0",
+          left: "0",
+          position: "absolute"
+        }}
+      >
         <button onClick={this.search}>click me</button>
         <button onClick={this.reset}>reset</button>
 
