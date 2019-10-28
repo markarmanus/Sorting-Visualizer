@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "06ee3b7313d8cb3420b90502a2bc6c32",
+    "revision": "63a6c196dd5c218500e08d4b016f9f02",
     "url": "//markarmanus.github.io/Sorting-Visualizer/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "//markarmanus.github.io/Sorting-Visualizer/static/js/2.f9affe0c.chunk.js"
   },
   {
-    "revision": "7d12f533e41e815817e8",
-    "url": "//markarmanus.github.io/Sorting-Visualizer/static/js/main.c2c491a7.chunk.js"
+    "revision": "1cc7620e14fe92cb86aa",
+    "url": "//markarmanus.github.io/Sorting-Visualizer/static/js/main.4c3e6568.chunk.js"
   },
   {
     "revision": "4bc8d9ec901109c7729f",
