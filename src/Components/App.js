@@ -5,6 +5,7 @@ import { generateArray } from "../HelperFunctions"
 import { BuubleSort } from "../SearchAlgorthims"
 import NavBar from "./NavBar"
 import { CONF } from "../Contstants/Conf"
+
 const VisualizerContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -25,7 +26,7 @@ export default class App extends React.Component {
       doneSotring: false,
       inProgress: false,
       switching: [],
-      speed: CONF.DEFAULT_SPEED,
+      speed: CONF.MAX_SPEED - CONF.DEFAULT_SPEED,
       newStart: true,
       selectedAlgorthim: "Bubble Sort"
     }
@@ -97,7 +98,7 @@ export default class App extends React.Component {
 
   onChangeSpeed(speed) {
     this.setState({
-      speed: 500 - speed
+      speed: CONF.MAX_SPEED - speed
     })
   }
 

@@ -4,8 +4,6 @@ import { Slider, Button, Typography, Select } from "antd"
 import "antd/dist/antd.css"
 import { CONF } from "../Contstants/Conf"
 
-const BREAK_POINT_SMALL_SCREEN = "880px"
-const BREAK_POINT_FULL_HD_SCREEN = "1920px"
 const Container = styled.div`
   vertical-align: middle;
   display: flex;
@@ -19,14 +17,14 @@ const CenterFlexBox = styled.div`
   align-items: center;
   margin: auto;
   flex-grow: 1;
-  @media (max-width: ${BREAK_POINT_SMALL_SCREEN}) {
+  @media (max-width: ${CONF.BREAK_POINT_SMALL_SCREEN}) {
     display: grid;
   }
 `
 const StyledButton = styled(Button)`
   margin: 10px 5%;
   width: 40%;
-  @media (max-width: ${BREAK_POINT_SMALL_SCREEN}) {
+  @media (max-width: ${CONF.BREAK_POINT_SMALL_SCREEN}) {
     width: 100%;
   }
 `
@@ -38,7 +36,7 @@ const Left = styled(CenterFlexBox)`
 const Center = styled(CenterFlexBox)`
   align-self: center;
   flex-grow: 3;
-  @media (max-width: ${BREAK_POINT_SMALL_SCREEN}) {
+  @media (max-width: ${CONF.BREAK_POINT_SMALL_SCREEN}) {
     display: contents;
   }
 `
@@ -63,10 +61,10 @@ const Title = styled(Typography.Title)`
   display: inline-block;
   font-size: 2vw !important;
   text-align: center;
-  @media (max-width: ${BREAK_POINT_SMALL_SCREEN}) {
+  @media (max-width: ${CONF.BREAK_POINT_SMALL_SCREEN}) {
     display: none;
   }
-  @media (min-width: ${BREAK_POINT_FULL_HD_SCREEN}) {
+  @media (min-width: ${CONF.BREAK_POINT_FULL_HD_SCREEN}) {
     font-size: 40px !important;
   }
   margin: 0 5px !important;
@@ -75,7 +73,7 @@ const StyledSelector = styled(Select)`
   width: 50%;
   margin: 10px 5% !important;
 
-  @media (max-width: ${BREAK_POINT_SMALL_SCREEN}) {
+  @media (max-width: ${CONF.BREAK_POINT_SMALL_SCREEN}) {
     width: 100%;
   }
 `
@@ -104,8 +102,8 @@ export default class NavBar extends Component {
               tooltipPlacement={"right"}
               defaultValue={CONF.DEFAULT_START_SIZE}
               onAfterChange={this.props.onChangeSize}
-              max={100}
-              min={4}
+              max={CONF.MAX_ARRAY_SIZE}
+              min={CONF.MIN_ARRAY_SIZE}
             />
           </SliderContainer>
           <Title>Sorting Visualizer</Title>
@@ -117,8 +115,8 @@ export default class NavBar extends Component {
               onAfterChange={this.props.onChangeSpeed}
               tipFormatter={value => value + "x"}
               tool
-              max={500}
-              min={1}
+              max={CONF.MAX_SPEED}
+              min={CONF.MIN_SPEED}
             />
           </SliderContainer>
         </Center>

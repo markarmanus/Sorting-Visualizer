@@ -46,6 +46,7 @@ export default class Visualizer extends React.Component {
         multiplexor: Visualizer.calculateNormalizer(props.values)
       }
     }
+    return null
   }
 
   render() {

@@ -1,15 +1,6 @@
 import React from "react"
-import styled from "styled-components"
 
-const maringPercentage = 0.1
-
-const BarContainer = styled.div`
-  width: ${props => props.width * (1 - maringPercentage)}%;
-  background-color: ${props => props.color};
-  margin-right: ${props => maringPercentage * props.width}%;
-  height: ${props => props.height}%;
-  display: inline-block;
-`
+const marginPercentage = 0.1
 
 export default class Bar extends React.Component {
   shouldComponentUpdate(nextProps) {
@@ -19,13 +10,22 @@ export default class Bar extends React.Component {
       nextProps.newStart
     )
   }
+
   render() {
     return (
-      <BarContainer
+      <div
+        //Using in line styling to avoid creating Multiple css classes.
+        style={{
+          width: `${this.props.width * (1 - marginPercentage)}%`,
+          backgroundColor: `${this.props.color}`,
+          marginRight: `${this.props.width * marginPercentage}%`,
+          height: `${this.props.height}%`,
+          display: "inline-block"
+        }}
         color={this.props.color}
         width={this.props.width}
         height={this.props.height}
-      ></BarContainer>
+      ></div>
     )
   }
 }
