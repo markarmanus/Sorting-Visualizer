@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.js": "//markarmanus.github.io/Sorting-Visualizer/static/js/main.c2c491a7.chunk.js",
+    "main.js.map": "//markarmanus.github.io/Sorting-Visualizer/static/js/main.c2c491a7.chunk.js.map",
+    "runtime-main.js": "//markarmanus.github.io/Sorting-Visualizer/static/js/runtime-main.cbf0f506.js",
+    "runtime-main.js.map": "//markarmanus.github.io/Sorting-Visualizer/static/js/runtime-main.cbf0f506.js.map",
+    "static/css/2.65d0fb34.chunk.css": "//markarmanus.github.io/Sorting-Visualizer/static/css/2.65d0fb34.chunk.css",
+    "static/js/2.f9affe0c.chunk.js": "//markarmanus.github.io/Sorting-Visualizer/static/js/2.f9affe0c.chunk.js",
+    "static/js/2.f9affe0c.chunk.js.map": "//markarmanus.github.io/Sorting-Visualizer/static/js/2.f9affe0c.chunk.js.map",
+    "index.html": "//markarmanus.github.io/Sorting-Visualizer/index.html",
+    "precache-manifest.caa491bed616e85b68cf15395ff95ec4.js": "//markarmanus.github.io/Sorting-Visualizer/precache-manifest.caa491bed616e85b68cf15395ff95ec4.js",
+    "service-worker.js": "//markarmanus.github.io/Sorting-Visualizer/service-worker.js",
+    "static/css/2.65d0fb34.chunk.css.map": "//markarmanus.github.io/Sorting-Visualizer/static/css/2.65d0fb34.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cbf0f506.js",
+    "static/css/2.65d0fb34.chunk.css",
+    "static/js/2.f9affe0c.chunk.js",
+    "static/js/main.c2c491a7.chunk.js"
+  ]
+}
