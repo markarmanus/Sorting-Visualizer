@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import styled from "styled-components"
 import { Slider, Button, Typography, Select } from "antd"
 import "antd/dist/antd.css"
+import { CONF } from "../Contstants/Conf"
 
 const BREAK_POINT_SMALL_SCREEN = "880px"
 const BREAK_POINT_FULL_HD_SCREEN = "1920px"
@@ -92,8 +93,8 @@ export default class NavBar extends Component {
           <StyledButton onClick={this.props.onClickSort} type="primary">
             Sort
           </StyledButton>
-          <StyledButton onClick={this.props.onClickSort} type="secondary">
-            Reset
+          <StyledButton onClick={this.props.onClickResetart} type="secondary">
+            Resetart
           </StyledButton>
         </Left>
         <Center>
@@ -101,8 +102,9 @@ export default class NavBar extends Component {
             <Label>Size</Label>
             <StyledSlider
               tooltipPlacement={"right"}
-              defaultValue={10}
-              max={250}
+              defaultValue={CONF.DEFAULT_START_SIZE}
+              onAfterChange={this.props.onChangeSize}
+              max={100}
               min={4}
             />
           </SliderContainer>
@@ -111,10 +113,11 @@ export default class NavBar extends Component {
             <Label>Speed</Label>
             <StyledSlider
               tooltipPlacement={"right"}
-              defaultValue={10}
+              defaultValue={CONF.DEFAULT_SPEED}
+              onAfterChange={this.props.onChangeSpeed}
               tipFormatter={value => value + "x"}
               tool
-              max={100}
+              max={500}
               min={1}
             />
           </SliderContainer>

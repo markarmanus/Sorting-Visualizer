@@ -1,0 +1,4 @@
+export const CONF = {
+  DEFAULT_START_SIZE: 10,
+  DEFAULT_SPEED: 50
+}
