@@ -1,8 +1,8 @@
 import React from "react"
 import Visualizer from "./Visualizer"
 import styled from "styled-components"
-import { generateArray } from "../HelperFunctions"
-import { BuubleSort } from "../SearchAlgorthims"
+import { generateArray, waitFor } from "../HelperFunctions"
+import { BuubleSort, SelectionSort, InsertionSort } from "../SearchAlgorthims"
 import NavBar from "./NavBar"
 import { CONF } from "../Contstants/Conf"
 
@@ -20,15 +20,16 @@ export default class App extends React.Component {
       values: values,
       originalValues: values.slice(),
       comparing: [],
-      pivot: null,
+      alternative: [],
       size: CONF.DEFAULT_START_SIZE,
       inFinalPosition: [],
+      pivot: [],
       doneSotring: false,
       inProgress: false,
       switching: [],
       speed: CONF.MAX_SPEED - CONF.DEFAULT_SPEED,
       newStart: true,
-      selectedAlgorthim: "Bubble Sort"
+      selectedAlgorthim: CONF.DEFAULT_ALGORTHIM
     }
     this.startSearch = this.startSearch.bind(this)
     this.onClickSort = this.onClickSort.bind(this)
@@ -57,7 +58,11 @@ export default class App extends React.Component {
       case "Bubble Sort":
         await BuubleSort(this)
         break
-      case "Quick Sort":
+      case "Selection Sort":
+        await SelectionSort(this)
+        break
+      case "Insertion Sort":
+        await InsertionSort(this)
         break
       default:
         break
@@ -68,7 +73,9 @@ export default class App extends React.Component {
         doneSotring: true,
         inProgress: false,
         comparing: [],
-        switching: []
+        switching: [],
+        pivot: [],
+        alternative: []
       })
     }
   }
@@ -80,13 +87,17 @@ export default class App extends React.Component {
       values: setValuesTo,
       originalValues: setValuesTo.slice(),
       switching: [],
+      pivot: [],
       inProgress: false,
       inFinalPosition: [],
+      alternative: [],
       doneSotring: false
     })
   }
 
-  onClickResetart() {
+  async onClickResetart() {
+    this.setState({ newStart: true })
+    await waitFor(100)
     this.resetValues(this.state.originalValues)
   }
 
@@ -121,6 +132,7 @@ export default class App extends React.Component {
           onClickNewArray={this.onClickNewArray}
           onClickResetart={this.onClickResetart}
           onSelectAlgorthim={this.onSelectAlgorthim}
+          inProgress={this.state.inProgress}
         ></NavBar>
         <VisualizerContainer>
           <Visualizer
@@ -129,6 +141,7 @@ export default class App extends React.Component {
             newStart={this.state.newStart}
             done={this.state.doneSotring}
             pivot={this.state.pivot}
+            alternative={this.state.alternative}
             inFinalPosition={this.state.inFinalPosition}
             values={this.state.values}
           ></Visualizer>

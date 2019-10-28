@@ -122,11 +122,14 @@ export default class NavBar extends Component {
         </Center>
         <Right>
           <StyledSelector
+            disabled={this.props.inProgress}
+            onChange={this.props.onSelectAlgorthim}
             styled={{ width: "100%" }}
-            defaultValue={"Bubble Sort"}
+            defaultValue={CONF.DEFAULT_ALGORTHIM}
           >
-            <Select.Option value="Quick Sort">Quick Sort</Select.Option>
+            <Select.Option value="Selection Sort">Selection Sort</Select.Option>
             <Select.Option value="Bubble Sort">Bubble Sort</Select.Option>
+            <Select.Option value="Insertion Sort">Insertion Sort</Select.Option>
           </StyledSelector>
           <StyledButton onClick={this.props.onClickNewArray} type="secondary">
             New Array

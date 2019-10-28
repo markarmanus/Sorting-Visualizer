@@ -30,12 +30,14 @@ export default class Visualizer extends React.Component {
   getColor(index) {
     return this.props.done || this.props.inFinalPosition.includes(index)
       ? COLORS.IN_POSITION
-      : this.props.pivot === index
-      ? COLORS.PIVOT
       : this.props.switching.includes(index)
       ? COLORS.SWITCHING
+      : this.props.pivot.includes(index)
+      ? COLORS.PIVOT
       : this.props.comparing.includes(index)
       ? COLORS.COMPARING
+      : this.props.alternative.includes(index)
+      ? COLORS.ALTERNATIVE
       : COLORS.NONE
   }
 
