@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 const maringPercentage = 0.1
+
 const BarContainer = styled.div`
   width: ${props => props.width * (1 - maringPercentage)}%;
   background-color: ${props => props.color};

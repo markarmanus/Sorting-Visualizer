@@ -1,14 +1,16 @@
 import React from "react"
 import styled from "styled-components"
 import Bar from "./Bar.js"
+import { COLORS } from "../Contstants/Colors"
 
 const Main = styled.div`
+  display: flex;
   height: 50%;
-  width: 80%;
+  width: 60%;
   margin: auto;
 `
 
-export default class Container extends React.Component {
+export default class Visualizer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -28,18 +30,21 @@ export default class Container extends React.Component {
   }
 
   calculateBarWidth(values) {
+    // to avoid negative values in case of really hight lengths.
     this.setState({
-      barWidth: Math.max(100 / values.length, 0.01)
+      barWidth: Math.max(100 / values.length, 0.001)
     })
   }
   getColor(index) {
-    return this.props.done
-      ? "purple"
+    return this.props.done || this.props.inFinalPosition.includes(index)
+      ? COLORS.IN_POSITION
+      : this.props.pivot == index
+      ? COLORS.PIVOT
       : this.props.switching.includes(index)
-      ? "red"
+      ? COLORS.SWITCHING
       : this.props.comparing.includes(index)
-      ? "green"
-      : "black"
+      ? COLORS.COMPARING
+      : COLORS.NONE
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.newStart) {
