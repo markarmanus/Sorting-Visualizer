@@ -1,12 +1,12 @@
 import React from "react"
 import Visualizer from "./Visualizer"
 import styled from "styled-components"
-import { generateArray, waitFor } from "./HelperFunctions"
+import { generateArray, waitFor } from "../HelperFunctions"
+import { BuubleSort } from "../SearchAlgorthims"
+import NavBar from "./NavBar"
 const VisualizerContainer = styled.div`
   width: 100%;
   height: 100%;
-  top: 10%;
-  left: 0;
   position: absolute;
 `
 export default class App extends React.Component {
@@ -26,7 +26,6 @@ export default class App extends React.Component {
     }
     this.startSearch = this.startSearch.bind(this)
     this.onClickSort = this.onClickSort.bind(this)
-    this.BuubleSort = this.BuubleSort.bind(this)
     this.reset = this.reset.bind(this)
   }
 
@@ -44,7 +43,7 @@ export default class App extends React.Component {
   async startSearch() {
     switch (this.state.selectedAlgorthim) {
       case "Bubble Sort":
-        await this.BuubleSort()
+        await BuubleSort(this)
         break
       case "Quick Sort":
         break
@@ -70,47 +69,10 @@ export default class App extends React.Component {
     })
   }
 
-  async BuubleSort() {
-    let tempCopy = this.state.values
-    for (let x = this.state.values.length - 1; x > 0; x--) {
-      for (let i = 0; i < x; i++) {
-        if (this.state.newStart) return
-        this.setState({
-          comparing: [i, i + 1]
-        })
-        await waitFor(this.state.speed)
-        if (tempCopy[i] > tempCopy[i + 1]) {
-          this.setState({
-            switching: [i, i + 1]
-          })
-          await waitFor(this.state.speed)
-          let temp = tempCopy[i]
-          tempCopy[i] = tempCopy[i + 1]
-          tempCopy[i + 1] = temp
-          this.setState({
-            values: tempCopy
-          })
-          await waitFor(this.state.speed)
-          this.setState({
-            switching: []
-          })
-          await waitFor(this.state.speed)
-        }
-      }
-      let temp = this.state.inFinalPosition
-      temp.push(x)
-      this.setState({
-        inFinalPosition: temp
-      })
-      await waitFor(this.state.speed)
-    }
-  }
-
   render() {
     return (
       <div>
-        <button onClick={this.onClickSort}>click me</button>
-        <button onClick={this.reset}>reset</button>
+        <NavBar></NavBar>
         <VisualizerContainer>
           <Visualizer
             comparing={this.state.comparing}
