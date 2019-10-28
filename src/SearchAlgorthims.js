@@ -1,4 +1,4 @@
-import { generateArray, waitFor } from "./HelperFunctions"
+import { waitFor } from "./HelperFunctions"
 
 export async function BuubleSort(component) {
   let tempCopy = component.state.values

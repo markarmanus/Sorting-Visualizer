@@ -12,9 +12,6 @@ const BarContainer = styled.div`
 `
 
 export default class Bar extends React.Component {
-  constructor(props) {
-    super(props)
-  }
   shouldComponentUpdate(nextProps) {
     return (
       nextProps.height !== this.props.height ||

@@ -1,7 +1,7 @@
 import React from "react"
 import Visualizer from "./Visualizer"
 import styled from "styled-components"
-import { generateArray, waitFor } from "../HelperFunctions"
+import { generateArray } from "../HelperFunctions"
 import { BuubleSort } from "../SearchAlgorthims"
 import NavBar from "./NavBar"
 import { CONF } from "../Contstants/Conf"
