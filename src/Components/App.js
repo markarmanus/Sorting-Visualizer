@@ -5,11 +5,13 @@ import { generateArray, waitFor } from "../HelperFunctions"
 import { BuubleSort, SelectionSort, InsertionSort } from "../SearchAlgorthims"
 import NavBar from "./NavBar"
 import { CONF } from "../Contstants/Conf"
-
-const VisualizerContainer = styled.div`
+import Footer from "./Footer"
+const PageContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: 94.5%;
+  flex-flow: column;
   position: absolute;
+  background-color: #dad2d8;
 `
 
 export default class App extends React.Component {
@@ -134,7 +136,7 @@ export default class App extends React.Component {
           onSelectAlgorthim={this.onSelectAlgorthim}
           inProgress={this.state.inProgress}
         ></NavBar>
-        <VisualizerContainer>
+        <PageContainer>
           <Visualizer
             comparing={this.state.comparing}
             switching={this.state.switching}
@@ -145,7 +147,8 @@ export default class App extends React.Component {
             inFinalPosition={this.state.inFinalPosition}
             values={this.state.values}
           ></Visualizer>
-        </VisualizerContainer>
+          <Footer />
+        </PageContainer>
       </div>
     )
   }

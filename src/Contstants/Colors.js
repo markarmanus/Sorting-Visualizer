@@ -1,8 +1,8 @@
 export const COLORS = {
-  ALTERNATIVE: "orange",
-  COMPARING: "green",
-  SWITCHING: "red",
-  IN_POSITION: "#782ed1",
-  PIVOT: "yellow",
-  NONE: "black"
+  ALTERNATIVE: "#F0A202",
+  COMPARING: "#005E2C",
+  SWITCHING: "#5E0035",
+  IN_POSITION: "#3E4368",
+  PIVOT: "#023C40",
+  NONE: "#000501"
 }

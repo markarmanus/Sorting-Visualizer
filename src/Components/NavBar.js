@@ -8,7 +8,7 @@ const Container = styled.div`
   vertical-align: middle;
   display: flex;
   align-items: center;
-  background-color: purple;
+  background-color: #1b2a41;
 `
 
 const CenterFlexBox = styled.div`
